@@ -14,6 +14,12 @@
 
 node.jsかLaravelかで迷ったが今触ってるLaravelを選択
 
+# 準備
+
+Twitter Developerに登録してAPIキーとアクセストークンを取得
+
+PHP/composer/laravel/gitなどをインストール
+
 # 手順
 
 まずはともあれディレクトリ作成とGit管理
@@ -28,10 +34,14 @@ $ git remote add origin git@github.com:kogaya/tweeter.git
 $ git push -u origin master
 ```
 
-サーバ起動後、localhostに接続して起動確認
+サーバ起動後、`localhost:8000`に接続して起動確認
 
 ```
 php -S localhost:8000 -t public
 ```
 
-調べた所、
+調べた所、twitterOAuthという便利なプラグインがあるっぽいので追加
+
+```
+composer require abraham/twitteroauth
+```
