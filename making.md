@@ -45,3 +45,14 @@ php -S localhost:8000 -t public
 ```
 composer require abraham/twitteroauth
 ```
+
+`.env`ファイルにAPIKeyなどを記述する
+
+```
+TWITTER_CLIENT_ID = 1fhhdGADQXttesdfzJ9FKoQKoFlowEr9-n10G1rL
+TWITTER_CLIENT_SECRET = QsFJDsU19fmyjS8EvSvlasVL6Krhdma34icgfdjJLu3evr3VxWay155
+TWITTER_CLIENT_ID_ACCESS_TOKEN = 11915728ksdgilh-2e2txmfHy84Fk4I1KcUfkawKyTo7k8WmccKhmw
+TWITTER_CLIENT_ID_ACCESS_TOKEN_SECRET = CZJIz093dgT6ahfnFla9bfuTyVMsJZNGCLEdL3N0WvytVk4s
+// 値はダミー
+```
+
