@@ -89,3 +89,16 @@ class TweetController extends Controller
 
 ボタンを押したらTweetコントローラを呼ぶだけの画面を作る
 
+`resource/views/welcom.blade.php`
+
+```
+<body>
+    <h1>テストTweet</h1>
+    <button 
+        onClick="location.href='{{route('tweet')}}'"
+        style="padding:20px">
+        TEST TWEET
+    </button>
+</body>
+```
+
