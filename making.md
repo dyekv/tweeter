@@ -102,3 +102,79 @@ class TweetController extends Controller
 </body>
 ```
 
+ルーティングしてみる
+
+```
+Route::get('tweet','TweetController@tweet')->name('tweet');
+```
+
+ボタンを押すとTest投稿とツイートされた
+
+次は画面で入力したツイートを送信する
+
+`resource/views/welcom.blade.php`
+
+```
+<body>
+    <h1>テストTweet</h1>
+    <form action="/" method="POST">
+    <textarea name="tweetString"></textarea>
+    {{csrf_field()}}
+    <input type="submit" value="ツイートする">
+    </form>
+    <button 
+        onClick="location.href='{{route('tweet')}}'"
+        style="padding:20px">
+        TEST TWEET
+    </button>
+</body>
+```
+
+簡単な投稿完了画面
+
+`resource/views/success.blade.php`
+
+```
+<h1>投稿完了</h1>
+```
+
+コントローラー修正
+
+```
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Abraham\TwitterOAuth\TwitterOAuth;
+
+class TweetController extends Controller
+{
+    public function tweet(Request $request){
+        $tweetString = $request->input('tweetString');
+
+        $twitter = new TwitterOAuth(env('TWITTER_CLIENT_ID'),
+            env('TWITTER_CLIENT_SECRET'),
+            env('TWITTER_CLIENT_ID_ACCESS_TOKEN'),
+            env('TWITTER_CLIENT_ID_ACCESS_TOKEN_SECRET'));
+
+        $twitter->post("statuses/update",[
+            "status" => $tweetString
+        ]);
+
+        return view('success');
+    }
+}
+```
+
+Postのルーティングを追加
+
+```
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::post('/','TweetController@tweet');
+```
+
+これで画面に入力したツイートが投稿できるようになった
