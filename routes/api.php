@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('tweet','TweetController@tweet')->name('tweet');
+
+Route::get('success','TweetController@success')->name('success');
